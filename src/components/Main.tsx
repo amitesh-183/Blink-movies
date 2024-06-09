@@ -20,7 +20,7 @@ const Main: React.FC<Props> = ({ sectionTitle, url, start = 0, end }) => {
       </div>
       <div>
         {loading ? (
-          <div className="grid 2xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-4 gap-4">
             {new Array(effectiveEnd - start).fill(null).map((_, index) => (
               <div
                 key={index}
