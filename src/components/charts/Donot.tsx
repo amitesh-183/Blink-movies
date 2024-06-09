@@ -1,13 +1,18 @@
-import React, { useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import * as am5 from "@amcharts/amcharts5/index";
 import * as am5percent from "@amcharts/amcharts5/percent";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
-const Donot = () => {
+// Define the type for the chart data
+type ChartData = {
+  [year: string]: { sector: string; size: number }[];
+};
+
+const Donut = () => {
   useLayoutEffect(() => {
     /* Chart code */
     // Define data for each year
-    let chartData = {
+    const chartData: ChartData = {
       "2020": [
         { sector: "Facebook", size: 0.6 },
         { sector: "Instagram", size: 6.6 },
@@ -37,8 +42,10 @@ const Donot = () => {
 
     // Create root element
     let root = am5.Root.new("chartdivee");
-    root._logo.dispose();
 
+    if (root._logo) {
+      root._logo.dispose();
+    }
     // Set themes
     root.setThemes([am5themes_Animated.new(root)]);
 
@@ -78,8 +85,8 @@ const Donot = () => {
 
     // Animate chart data
     let currentYear = 2020;
-    function getCurrentData() {
-      let data = chartData[currentYear.toString()];
+    function getCurrentData(): { sector: string; size: number }[] {
+      const data = chartData[currentYear.toString()];
       currentYear++;
       if (currentYear > 2024) currentYear = 2020;
       return data;
@@ -88,14 +95,14 @@ const Donot = () => {
     series.labels.template.set("visible", false);
     series.ticks.template.set("visible", false);
 
-    // function loop() {
-    //   label.set("text", currentYear);
-    //   let data = getCurrentData();
-    //   series.data.setAll(data);
-    //   chart.setTimeout(loop, 4000);
-    // }
+    function loop() {
+      label.set("text", currentYear.toString());
+      const data = getCurrentData();
+      series.data.setAll(data);
+      chart.setTimeout(loop, 4000);
+    }
 
-    // loop();
+    loop();
 
     return () => {
       root.dispose();
@@ -110,4 +117,4 @@ const Donot = () => {
   );
 };
 
-export default Donot;
+export default Donut;

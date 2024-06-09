@@ -4,7 +4,6 @@ import useGenre from "@/hooks/useGenre";
 
 const Genres = () => {
   const { apiList } = useGenre("/genre/tv/list");
-  console.log(apiList);
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <Sidebar />

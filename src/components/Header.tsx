@@ -27,7 +27,7 @@ import {
   NavigationMenuContent,
   // NavigationMenuIndicator,
   NavigationMenuItem,
-  NavigationMenuLink,
+  // NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   // NavigationMenuViewport,
@@ -35,9 +35,7 @@ import {
 import useGenre from "@/hooks/useGenre";
 
 const Header = () => {
-  // const { apiList } = useFetch("/genre/movie/list?language=en");
-  const { apiList } = useGenre("/genre/tv/list?language=en");
-  console.log(apiList);
+  const { apiList } = useGenre("/genre/movie/list?language=en");
   return (
     <>
       <header className="flex h-14 items-center gap-4 border-b bg-white px-4 lg:h-[60px] lg:px-6 z-10 sticky top-0">

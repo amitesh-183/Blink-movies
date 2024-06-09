@@ -27,8 +27,9 @@ const data: DataPoint[] = [
 const FlowChart = () => {
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
-    root._logo.dispose();
-
+    if (root._logo) {
+      root._logo.dispose();
+    }
     root.setThemes([am5themes_Animated.new(root)]);
 
     let chart = root.container.children.push(
@@ -130,25 +131,6 @@ const FlowChart = () => {
       });
 
       series.data.setAll(data);
-
-      // Find the maximum value in the series
-      //   const maxValue = Math.max(...data.map((d) => d[field]));
-      //   const maxIndex = data.findIndex((d) => d[field] === maxValue);
-
-      // Add bullet only to the maximum value data point
-      //   series.bullets.push(function () {
-      //     if (series.dataItems[maxIndex].get("valueY") === maxValue) {
-      //       return am5.Bullet.new(root, {
-      //         sprite: am5.Circle.new(root, {
-      //           radius: 4,
-      //           fill: series.get("fill"),
-      //           stroke: strokeColor,
-      //           strokeWidth: 0,
-      //         }),
-      //       });
-      //     }
-      //     return null;
-      //   });
 
       series.appear(1000);
     }
