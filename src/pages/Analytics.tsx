@@ -10,7 +10,7 @@ const Analytics = () => {
       <div className="flex flex-col">
         <Header />
         <main>
-          <div className="grid grid-cols-2 gap-6 px-8 my-4">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-6 px-8 my-4">
             <FlowChart />
             <Donot />
           </div>

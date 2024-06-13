@@ -14,7 +14,7 @@ const Main: React.FC<Props> = ({ sectionTitle, url, start = 0, end }) => {
   const effectiveEnd = end !== undefined ? end : apiList.length;
 
   return (
-    <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+    <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full">
       <div className="flex items-center">
         <h1 className="text-lg font-semibold md:text-2xl">{sectionTitle}</h1>
       </div>
@@ -39,14 +39,14 @@ const Main: React.FC<Props> = ({ sectionTitle, url, start = 0, end }) => {
             ))}
           </div>
         ) : (
-          <div className="grid 2xl:grid-cols-4 grid-cols-4 gap-4">
+          <div className="grid 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 grid-cols-3 gap-4">
             {apiList.slice(start, effectiveEnd).map((movie) => (
               <div
                 key={movie.id}
                 className="hover:shadow-[0px_0px_10px_#ccc] scale-[0.99] hover:scale-[1] duration-300 p-2 rounded-xl"
               >
                 <img
-                  className="rounded-xl w-full lg:h-[340px] h-[180px]"
+                  className="rounded-xl w-full 2xl:h-[340px] xl:h-[300px] lg:h-[280px] h-[180px]"
                   src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
                   alt={movie.title || movie.name}
                 />
