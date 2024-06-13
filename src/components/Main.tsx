@@ -28,12 +28,12 @@ const Main: React.FC<Props> = ({ sectionTitle, url, start = 0, end }) => {
               >
                 <Skeleton className="w-full h-[300px]" />
                 <h4 className="font-bold text-xl text-ellipsis text-nowrap w-full overflow-hidden py-4">
-                  <Skeleton className="h-4 w-[250px]" />
+                  <Skeleton className="h-4 w-full" />
                 </h4>
                 <p className="line-clamp-3 space-y-1">
-                  <Skeleton className="h-4 w-[250px]" />
-                  <Skeleton className="h-4 w-[250px]" />
-                  <Skeleton className="h-4 w-[250px]" />
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-full" />
                 </p>
               </div>
             ))}
