@@ -5,6 +5,9 @@ import Genres from "./pages/Genres";
 import Community from "./pages/Community";
 import Upload from "./pages/Upload";
 import Analytics from "./pages/Analytics";
+import Movies from "./pages/Movies";
+import "./App.css";
+import Player from "./components/Player";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +15,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/search/?:query",
+    path: "/search",
     element: <Search />,
   },
   {
@@ -31,6 +34,18 @@ const router = createBrowserRouter([
     path: "/analytics",
     element: <Analytics />,
   },
+  {
+    path: "/movies",
+    element: <Movies />,
+  },
+  {
+    path: "/player/:playerId",
+    element: <Player />,
+  },
+  // {
+  //   path: "/tv",
+  //   element: <TvSeries />,
+  // },
 ]);
 
 const App = () => {

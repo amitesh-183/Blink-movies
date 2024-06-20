@@ -1,9 +1,10 @@
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
-import useGenre from "@/hooks/useGenre";
+import useFetch from "@/hooks/UseFetch";
 
 const Genres = () => {
-  const { apiList } = useGenre("/genre/tv/list");
+  const { apiList } = useFetch("/genre/movie/list");
+  console.log(apiList);
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <Sidebar />

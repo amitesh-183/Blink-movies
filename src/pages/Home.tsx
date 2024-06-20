@@ -1,6 +1,5 @@
 // import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
-import Main from "@/components/Main";
+import HeroSection from "@/components/HeroSection";
 import QuickSearch from "@/components/QuickSearch";
 
 export function Home() {
@@ -8,8 +7,9 @@ export function Home() {
     <>
       <QuickSearch />
       <div className="grid min-h-screen w-full md:grid-cols-auto">
+        <HeroSection url={"/movie/upcoming"} />
         {/* <Sidebar /> */}
-        <div className="flex flex-col w-full">
+        {/* <div className="flex flex-col w-full">
           <Header />
           <Main
             sectionTitle={"Popular Movies"}
@@ -35,7 +35,7 @@ export function Home() {
             start={0}
             end={7}
           />
-        </div>
+        </div> */}
       </div>
     </>
   );

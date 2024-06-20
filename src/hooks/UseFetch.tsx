@@ -9,6 +9,11 @@ interface MovieProps {
   title: string;
   name?: string;
   poster_path: string;
+  backdrop_path: string;
+  release_dare: string;
+  vote_count: number;
+  vote_average: number;
+  release_date: React.ReactNode;
   overview: string;
 }
 
@@ -16,7 +21,7 @@ interface MovieResponse {
   results: MovieProps[];
 }
 
-const useFetch = (url: string) => {
+const useFetch = (url: string, genreId?: number, searchQuery?: string) => {
   const [apiList, setApiList] = useState<MovieProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -27,11 +32,14 @@ const useFetch = (url: string) => {
       accept: "application/json",
       Authorization: `Bearer ${token}`,
     },
+    params: {
+      with_genres: genreId,
+      query: searchQuery,
+    },
   };
-
   useEffect(() => {
     fetchMovies();
-  }, []);
+  }, [url, genreId, searchQuery]);
 
   const fetchMovies = async (): Promise<void> => {
     try {
