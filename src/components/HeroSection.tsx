@@ -13,8 +13,7 @@ import { Card, CardContent } from "./ui/card";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Button } from "./ui/button";
-import logo from "../assets/reel.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSearch } from "@/context/Search";
 
 type Props = {
@@ -27,29 +26,32 @@ type Props = {
 
 const HeroSection: React.FC<Props> = ({ url }) => {
   const { apiList } = useFetch(url);
+  const searchRef = useRef(null);
+  // const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
-  // const [searchQuery, setSearchQuery] = useState("");
   const { searchQuery, setSearchQuery } = useSearch();
   const plugin = useRef(Autoplay({ delay: 2000 }));
-  console.log(apiList);
+  // console.log(apiList);
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
 
   const handleSearch = () => {
-    navigate("/search");
+    navigate(`/search/${searchQuery}`);
     console.log(searchQuery);
+  };
+
+  const handleSearchPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
   };
   return (
     <>
-      {/* {apiList.map((item) => (
-        <div key={item.id}>
-        </div>
-        ))} */}
-      <div className=" absolute text-white z-10 w-full top-[20%] left-1/2 flex justify-center translate-x-[-50%] translate-y-[-50%]">
+      <div className=" absolute text-white z-10 w-full top-[16%] left-1/2 flex justify-center translate-x-[-50%] translate-y-[-50%]">
         <div className="flex flex-col gap-2 justify-center items-center">
-          <h2 className="text-4xl font-bold">Blink Search</h2>
+          <h2 className="text-3xl font-bold">Blink Search</h2>
           <div className="searchBox">
             <input
               className="searchInput"
@@ -58,9 +60,12 @@ const HeroSection: React.FC<Props> = ({ url }) => {
               value={searchQuery || ""}
               onChange={handleSearchInputChange}
               placeholder="Search something"
+              onKeyUp={handleSearchPress}
             />
             <button
+              type="submit"
               title="search"
+              ref={searchRef}
               className="searchButton"
               onClick={handleSearch}
             >
@@ -69,38 +74,28 @@ const HeroSection: React.FC<Props> = ({ url }) => {
           </div>
         </div>
       </div>
-
-      <div className="absolute top-0 flex justify-between items-center text-white w-full left-0 z-10 px-6 py-6">
-        <div className="flex gap-1 items-center">
-          <h3 className="font-black text-3xl tracking-wide">Blink</h3>
-          <img src={logo} className="w-16 h-16" alt="Blink-Movie-Icon" />
-        </div>
-        <ul className="flex gap-8 text-xl">
-          <Link to={"/"} className="border-b-4 border-pink-700">
-            Home
-          </Link>
-          <Link to={"/genres"}>Genre</Link>
-          <Link to={"/movies"}>Movie</Link>
-          <Link to={"/"}>TV Series</Link>
-          <Link to={"/"}>About</Link>
-        </ul>
-      </div>
-      <div className="flex absolute bottom-0 z-10 w-full">
-        <Carousel className="w-10/12 ms-20">
-          <CarouselContent>
+      <div className="flex absolute bottom-2 right-4 z-10">
+        <Carousel className="max-w-4xl ms-auto">
+          <CarouselContent className="pt-10">
             {apiList.map((item) => (
-              <CarouselItem key={item.id} className="basis-1/4">
+              <CarouselItem
+                key={item.id}
+                className="basis-1/5 hover:scale-105 z-30 duration-300 ease-in-out"
+              >
                 <div className="p-1">
-                  <Card>
+                  <Card
+                    onClick={() => navigate(`/movie-info/${item.id}`)}
+                    className="cursor-pointer rounded-none"
+                  >
                     <CardContent className="flex aspect-auto items-center justify-center p-0">
                       <span className="text-4xl font-semibold">
                         <img
                           src={
-                            "https://image.tmdb.org/t/p/w500" +
-                            item.backdrop_path
+                            "https://image.tmdb.org/t/p/original" +
+                            item.poster_path
                           }
                           alt={item.title}
-                          className="w-full object-fill h-full rounded-lg"
+                          className="w-full h-full"
                         />
                       </span>
                     </CardContent>
@@ -121,12 +116,13 @@ const HeroSection: React.FC<Props> = ({ url }) => {
       >
         <CarouselContent>
           {apiList.map((item) => (
-            <CarouselItem key={item.id} className=" p-0 m-0">
+            <CarouselItem key={item.id} className=" p-0 m-0 border-0">
               <div className="">
                 <Card>
                   <CardContent className="flex h-screen w-full p-0 text-white items-center justify-center relative">
-                    <div className="bg-black/60 absolute inset-0"></div>
-                    <div className="absolute left-10 bottom-[30%] w-[70%]">
+                    <div className="bg-black/30 absolute inset-0"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
+                    <div className="absolute left-20 bottom-[20%] w-[70%]">
                       <h1 className="font-black text-7xl py-6">{item.title}</h1>
                       <p className="max-w-2xl">
                         {item.overview.length > 200 ? (
@@ -158,7 +154,8 @@ const HeroSection: React.FC<Props> = ({ url }) => {
                     </div>
                     <img
                       src={
-                        "https://image.tmdb.org/t/p/w500" + item.backdrop_path
+                        "https://image.tmdb.org/t/p/original" +
+                        item.backdrop_path
                       }
                       alt={item.title}
                       className="w-full object-fill h-full"

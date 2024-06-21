@@ -1,7 +1,7 @@
 import useFetch from "@/hooks/UseFetch";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 // import {
 //   Carousel,
 //   CarouselContent,
@@ -30,6 +30,7 @@ const Main: React.FC<Props> = ({
 }) => {
   const { apiList, loading } = useFetch(url, genreId, searchQuery);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const effectiveEnd = end !== undefined ? end : apiList.length;
 
   return (
@@ -39,7 +40,7 @@ const Main: React.FC<Props> = ({
       </div>
       <div>
         {loading ? (
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 grid-cols-3 md:gap-4 gap-0">
             {new Array(effectiveEnd - start).fill(null).map((_, index) => (
               <div
                 key={index}
@@ -49,11 +50,11 @@ const Main: React.FC<Props> = ({
                 <h4 className="font-bold text-xl text-ellipsis text-nowrap w-full overflow-hidden py-4">
                   <Skeleton className="h-4 w-full" />
                 </h4>
-                <p className="line-clamp-3 space-y-1">
+                {/* <p className="line-clamp-3 space-y-1">
                   <Skeleton className="h-4 w-full" />
                   <Skeleton className="h-4 w-full" />
                   <Skeleton className="h-4 w-full" />
-                </p>
+                </p> */}
               </div>
             ))}
           </div>
@@ -64,12 +65,21 @@ const Main: React.FC<Props> = ({
             {apiList.slice(start, effectiveEnd).map((movie) => (
               <div
                 key={movie.id}
-                onClick={() => navigate(`/player/${movie.id}`)}
+                // onClick={() => navigate(`/player/${movie.id}`)}
+                onClick={() =>
+                  navigate(
+                    `/${pathname.includes("/tv") ? "tv" : "movie"}-info/${
+                      movie.id
+                    }`
+                  )
+                }
                 className=" hover:brightness-125 scale-[0.99] hover:scale-[1] duration-300 p-2 rounded-xl"
               >
                 <img
                   className=" w-full 2xl:h-full xl:h-[300px] lg:h-[280px] object-cover md:h-[360px] sm:h-[300px] h-[120px]"
-                  src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+                  src={
+                    "https://image.tmdb.org/t/p/original" + movie.poster_path
+                  }
                   alt={movie.title || movie.name}
                 />
                 <div className="px-2 w-full">

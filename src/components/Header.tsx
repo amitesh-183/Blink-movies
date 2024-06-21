@@ -1,16 +1,17 @@
+import { BiSearch } from "react-icons/bi";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Button } from "./ui/button";
 import {
-  Bell,
+  // Bell,
   ChevronDown,
-  CircleUser,
+  // CircleUser,
   Film,
   Home,
   LineChart,
   Menu,
-  Moon,
+  // Moon,
   ShoppingCart,
-  Sun,
+  // Sun,
   Users,
 } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -19,16 +20,17 @@ import { Badge } from "./ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
+  // DropdownMenuItem,
+  // DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuSeparator,
+  // DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { useTheme } from "@/context/ThemeProvider";
+// import { useTheme } from "@/context/ThemeProvider";
 import { useState } from "react";
 import { useGenres } from "@/context/Genre";
+import { Separator } from "./ui/separator";
 // import useFetch from "@/hooks/UseFetch";
 import useGenre from "@/hooks/useGenre";
 // import { useEffect } from "react";
@@ -38,8 +40,8 @@ interface Genre {
   name: string;
 }
 
-const Header = () => {
-  const { setTheme } = useTheme();
+const Header = ({ extraClasses = "" }) => {
+  // const { setTheme } = useTheme();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [genreName, setGenreName] = useState<string | undefined>(undefined);
@@ -53,15 +55,18 @@ const Header = () => {
       (genre: Genre) => genre.id === genreId
     )?.name;
     setGenreName(selectedGenre);
-    navigate("/movies");
+    navigate(`/movies/${selectedGenre}`);
   };
   // console.log(genres);
   return (
     <>
-      <header className="flex h-14 items-center justify-between gap-4 px-4 lg:h-[60px] lg:px-6 z-10">
-        <div>
-          <img src={logo} className="w-30 h-30" alt="Wink" />
-        </div>
+      <div
+        className={`flex justify-between items-center border-b text-white w-full left-0 z-10 px-10 py-2 ${extraClasses}`}
+      >
+        <Link to={"/"} className="flex gap-1 items-center">
+          <h3 className="font-black text-3xl tracking-wide">Blink</h3>
+          <img src={logo} className="w-10 h-10" alt="Blink-Movie-Icon" />
+        </Link>
         <Sheet>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="outline" size="icon" className="shrink-0">
@@ -139,28 +144,29 @@ const Header = () => {
             </nav>
           </SheetContent>
         </Sheet>
-        {/* <div className="flex justify-between items-center w-full"> */}
-        <div className="sm:flex hidden gap-4 items-center">
-          <Link to="/" className="text-lg font-semibold">
+        <div className="md:flex hidden gap-8 items-center text-xl">
+          <Link to={"/"} className="">
             Home
           </Link>
-          <Link to="/movies" className="text-lg font-semibold">
-            Movies
-          </Link>
-          <Link to="/tv" className="text-lg font-semibold">
-            Tv Shows
-          </Link>
+          {/* <Link to={"/genres"}>Genre</Link> */}
+          <Link to={"/movies"}>Movie</Link>
+          <Link to={"/tv-series"}>TV Series</Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="text-lg font-semibold">
-                {genreName || "Genres"} <ChevronDown />
+              <Button
+                variant="ghost"
+                className="text-xl hover:bg-transparent p-0 font-semibold"
+              >
+                {genreName || "Genres"}{" "}
+                <ChevronDown size={14} className="mt-2 ms-1" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-              <DropdownMenuSeparator />
+            <DropdownMenuContent className="w-auto">
+              {/* <DropdownMenuSeparator /> */}
               <DropdownMenuRadioGroup
                 value={genres?.toString()}
                 onValueChange={onGenreChange}
+                className="h-[200px] overflow-y-auto"
               >
                 {apiList.map((genre) => (
                   <DropdownMenuRadioItem
@@ -171,18 +177,20 @@ const Header = () => {
                   </DropdownMenuRadioItem>
                 ))}
               </DropdownMenuRadioGroup>
-              {/* <DropdownMenuSeparator /> */}
             </DropdownMenuContent>
           </DropdownMenu>
-          <Link to="#" className="text-lg font-semibold">
-            Community
+          <Separator orientation="vertical" className="w-0.5 mt-2 h-6" />
+          <Link to={""} className="mt-2">
+            <BiSearch size={24} />
           </Link>
-          {/* <div className="flex items-center gap-4"> */}
-          <Button variant="outline" size="icon" className="ml-auto h-8 w-12">
+          {/* <Link to="#" className="text-lg font-semibold">
+            Community
+          </Link> */}
+          {/* <Button variant="outline" size="icon" className="ml-auto h-8 w-12">
             <Bell className="h-4 w-4" />
             <span className="sr-only">Toggle notifications</span>
-          </Button>
-          <DropdownMenu>
+          </Button> */}
+          {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon">
                 <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -201,8 +209,8 @@ const Header = () => {
                 System
               </DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu>
-          <DropdownMenu>
+          </DropdownMenu> */}
+          {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
                 <CircleUser className="h-5 w-10" />
@@ -217,11 +225,9 @@ const Header = () => {
               <DropdownMenuSeparator />
               <DropdownMenuItem>Logout</DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu>
-          {/* </div> */}
+          </DropdownMenu> */}
         </div>
-        {/* </div> */}
-      </header>
+      </div>
     </>
   );
 };

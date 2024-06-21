@@ -1,4 +1,6 @@
+import { MdManageSearch } from "react-icons/md";
 // import Header from "@/components/Header";
+import Header from "@/components/Header";
 import Main from "@/components/Main";
 import { useSearch } from "@/context/Search";
 import { ChangeEvent } from "react";
@@ -11,9 +13,9 @@ const Search = () => {
   };
   return (
     <>
-      {/* <Header /> */}
-      <div className="flex flex-col gap-2 justify-center items-center">
-        <h2 className="text-4xl font-bold">Blink Search</h2>
+      <Header />
+      <div className="flex flex-col mt-4 gap-2 justify-center items-center">
+        {/* <h2 className="text-4xl font-bold">Blink Search</h2> */}
         <div className="searchBox">
           <input
             className="searchInput"
@@ -32,14 +34,25 @@ const Search = () => {
           </button>
         </div>
       </div>
-      <h4 className="px-10 font-semibold text-2xl">
+      {/* <h4 className="px-10 font-semibold text-2xl">
         Search Results for : {searchQuery}
-      </h4>
-      <Main
-        sectionTitle={`Search Results for ${searchQuery}`}
-        url="/search/multi"
-        searchQuery={searchQuery !== null ? searchQuery : undefined}
-      />
+      </h4> */}
+      {searchQuery ? (
+        <Main
+          sectionTitle={`Search Results for ${searchQuery}`}
+          url="/search/multi"
+          searchQuery={searchQuery !== null ? searchQuery : undefined}
+        />
+      ) : (
+        <>
+          <div className="flex items-center flex-col justify-center min-h-[60vh]">
+            <MdManageSearch size={120} className="text-zinc-500/40" />
+            <h2 className="text-2xl font-bold">
+              Search Some Amazing movies/series
+            </h2>
+          </div>
+        </>
+      )}
     </>
   );
 };

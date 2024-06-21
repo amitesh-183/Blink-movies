@@ -8,6 +8,8 @@ import Analytics from "./pages/Analytics";
 import Movies from "./pages/Movies";
 import "./App.css";
 import Player from "./components/Player";
+import TvShows from "./pages/TvShows";
+import Details from "./pages/Details";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/search",
+    element: <Search />,
+  },
+  {
+    path: "/search/:searchTerm",
     element: <Search />,
   },
   {
@@ -35,17 +41,29 @@ const router = createBrowserRouter([
     element: <Analytics />,
   },
   {
+    path: "/movies/:genre",
+    element: <Movies />,
+  },
+  {
     path: "/movies",
     element: <Movies />,
+  },
+  {
+    path: "/movie-info/:movieId",
+    element: <Details />,
+  },
+  {
+    path: "/tv-info/:movieId",
+    element: <Details />,
   },
   {
     path: "/player/:playerId",
     element: <Player />,
   },
-  // {
-  //   path: "/tv",
-  //   element: <TvSeries />,
-  // },
+  {
+    path: "/tv-series",
+    element: <TvShows />,
+  },
 ]);
 
 const App = () => {
