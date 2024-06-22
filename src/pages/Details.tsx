@@ -1,17 +1,28 @@
+import { BsFillPlayFill } from "react-icons/bs";
 import Header from "@/components/Header";
 import useDetails from "@/hooks/useDetails";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 
 const Details = () => {
   const { movieId } = useParams<{ movieId: string }>();
-  console.log(movieId);
+  const navigate = useNavigate();
+  // console.log(movieId);
   const { pathname } = useLocation();
+  const [runtime, setRuntime] = useState("");
 
   const { apiList } = useDetails(
     `/${pathname.includes("/tv") ? "tv" : "movie"}/${movieId}`
   );
 
   console.log(apiList);
+
+  // convert minutes into hours
+  if (apiList?.runtime) {
+    const hours = Math.floor(apiList?.runtime / 60);
+    const minutes = apiList?.runtime % 60;
+    setRuntime(`${hours}h ${minutes}m`);
+  }
 
   return (
     <>
@@ -28,7 +39,7 @@ const Details = () => {
             className=" 2xl:[700px] h-[560px] w-full object-cover"
           />
         </div>
-        <div className="px-20 -translate-y-72 flex gap-8">
+        <div className="px-20 flex gap-8">
           <div className="poster-area">
             <img
               src={`https://image.tmdb.org/t/p/original${apiList?.poster_path}`}
@@ -53,7 +64,32 @@ const Details = () => {
                 </li>
               ))}
             </ul>
+            <div className="py-4">
+              <p className="py-1 font-semibold">
+                Release Date : {apiList?.release_date}
+              </p>
+              <p className="py-1 font-semibold">Time : {runtime}</p>
+              <p className="py-1 font-semibold">
+                Language : {apiList?.original_language == "en" ? "English" : ""}
+              </p>
+              <p className="py-1 font-semibold">
+                Revenue : ${apiList?.revenue}
+              </p>
+            </div>
           </div>
+        </div>
+        <div className="px-20 flex gap-4 py-8">
+          <button className="px-10 bg-muted/50 font-bold text-lg flex items-center gap-2 rounded-lg py-3">
+            <BsFillPlayFill size={28} />
+            Watch Trailer
+          </button>
+          <button
+            className="px-10 bg-pink-600 font-bold text-lg flex items-center gap-2 rounded-lg py-3"
+            onClick={() => navigate(`/player/${apiList?.id}`)}
+          >
+            <BsFillPlayFill size={28} />
+            Watch Now
+          </button>
         </div>
       </div>
     </>

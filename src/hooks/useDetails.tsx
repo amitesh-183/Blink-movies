@@ -17,6 +17,10 @@ interface DetailsProps {
   backdrop_path: string;
   overview: string;
   genres: Genre[];
+  runtime: number;
+  release_date: string;
+  original_language: string;
+  revenue: number;
 }
 
 // DetailsResponse should reflect the actual structure of the API response
@@ -28,6 +32,10 @@ interface DetailsResponse {
   backdrop_path: string;
   overview: string;
   genres: Genre[];
+  runtime: number;
+  release_date: string;
+  original_language: string;
+  revenue: number;
 }
 
 const useDetails = (url: string) => {

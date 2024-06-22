@@ -1,5 +1,4 @@
 import { BiSearch } from "react-icons/bi";
-import { BiPlay } from "react-icons/bi";
 import imdb from "../assets/imdb.svg";
 import useFetch from "@/hooks/UseFetch";
 import {
@@ -75,12 +74,12 @@ const HeroSection: React.FC<Props> = ({ url }) => {
         </div>
       </div>
       <div className="flex absolute bottom-2 right-4 z-10">
-        <Carousel className="max-w-4xl ms-auto">
+        <Carousel className="md:max-w-4xl max-w-sm md:ms-auto mx-auto">
           <CarouselContent className="pt-10">
             {apiList.map((item) => (
               <CarouselItem
                 key={item.id}
-                className="basis-1/5 hover:scale-105 z-30 duration-300 ease-in-out"
+                className="md:basis-1/5 basis-1/3 hover:scale-105 z-30 duration-300 ease-in-out"
               >
                 <div className="p-1">
                   <Card
@@ -118,12 +117,14 @@ const HeroSection: React.FC<Props> = ({ url }) => {
           {apiList.map((item) => (
             <CarouselItem key={item.id} className=" p-0 m-0 border-0">
               <div className="">
-                <Card>
-                  <CardContent className="flex h-screen w-full p-0 text-white items-center justify-center relative">
+                <Card className="border-none">
+                  <CardContent className="flex lg:h-screen h-[600px] w-full p-0 text-white items-center justify-center relative">
                     <div className="bg-black/30 absolute inset-0"></div>
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
-                    <div className="absolute left-20 bottom-[20%] w-[70%]">
-                      <h1 className="font-black text-7xl py-6">{item.title}</h1>
+                    <div className="absolute md:left-20 left-10 md:bottom-[20%] bottom-[10%] md:w-[70%] w-[80%]">
+                      <h1 className="font-black md:text-7xl text-4xl py-6">
+                        {item.title}
+                      </h1>
                       <p className="max-w-2xl">
                         {item.overview.length > 200 ? (
                           <>
@@ -146,10 +147,10 @@ const HeroSection: React.FC<Props> = ({ url }) => {
                       </div>
                       <div className="flex gap-4">
                         <Button variant={"outline"}>Watch Trailer</Button>
-                        <Button className="bg-pink-700 flex gap-1 items-center">
+                        {/* <Button className="bg-pink-700 text-white flex gap-1 items-center">
                           <BiPlay className="w-6 h-6" />
                           Watch Now
-                        </Button>
+                        </Button> */}
                       </div>
                     </div>
                     <img
@@ -158,7 +159,7 @@ const HeroSection: React.FC<Props> = ({ url }) => {
                         item.backdrop_path
                       }
                       alt={item.title}
-                      className="w-full object-fill h-full"
+                      className="w-full md:object-fill object-cover h-full"
                     />
                     <span className="text-4xl font-semibold">{item.name}</span>
                   </CardContent>

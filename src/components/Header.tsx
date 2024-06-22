@@ -9,6 +9,7 @@ import {
   Home,
   LineChart,
   Menu,
+  Search,
   // Moon,
   ShoppingCart,
   // Sun,
@@ -61,54 +62,56 @@ const Header = ({ extraClasses = "" }) => {
   return (
     <>
       <div
-        className={`flex justify-between items-center border-b text-white w-full left-0 z-10 px-10 py-2 ${extraClasses}`}
+        className={`flex justify-between items-center border-b text-white w-full left-0 z-10 md:px-10 px-4 py-2 ${extraClasses}`}
       >
         <Link to={"/"} className="flex gap-1 items-center">
           <h3 className="font-black text-3xl tracking-wide">Blink</h3>
           <img src={logo} className="w-10 h-10" alt="Blink-Movie-Icon" />
         </Link>
-        <Sheet>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="outline" size="icon" className="shrink-0">
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="flex flex-col">
-            <nav className="grid gap-2 text-lg font-medium">
-              <Link
-                to="#"
-                className="flex items-center gap-2 text-lg font-semibold"
-              >
-                <img src={logo} alt="blink" className="h-10 w-10" />
-                <span className="sr-only">Wink</span>
-              </Link>
-              <Link
-                to="/"
-                className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
-                  pathname.endsWith("/")
-                    ? "text-primary bg-muted"
-                    : "text-muted-foreground"
-                } transition-all hover:text-primary`}
-              >
-                <Home className="h-4 w-4" />
-                Home
-              </Link>
-              <Link
-                to="/genres"
-                className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
-                  pathname.includes("genres")
-                    ? "text-primary bg-muted"
-                    : "text-muted-foreground"
-                } transition-all hover:text-primary`}
-              >
-                <ShoppingCart className="h-4 w-4" />
-                Genres
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  6
-                </Badge>
-              </Link>
-              <Link
+        <div className="flex gap-4 items-center">
+          <Search className="md:hidden" />
+          <Sheet>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="outline" size="icon" className="shrink-0">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="flex flex-col">
+              <nav className="grid gap-2 text-lg font-medium">
+                <Link
+                  to="#"
+                  className="flex items-center gap-2 text-lg font-semibold"
+                >
+                  <img src={logo} alt="blink" className="h-10 w-10" />
+                  <span className="sr-only">Wink</span>
+                </Link>
+                <Link
+                  to="/"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
+                    pathname.endsWith("/")
+                      ? "text-primary bg-muted"
+                      : "text-muted-foreground"
+                  } transition-all hover:text-primary`}
+                >
+                  <Home className="h-4 w-4" />
+                  Home
+                </Link>
+                <Link
+                  to="/genres"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
+                    pathname.includes("genres")
+                      ? "text-primary bg-muted"
+                      : "text-muted-foreground"
+                  } transition-all hover:text-primary`}
+                >
+                  <ShoppingCart className="h-4 w-4" />
+                  Genres
+                  <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                    6
+                  </Badge>
+                </Link>
+                {/* <Link
                 to="/upload"
                 className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
                   pathname.includes("upload")
@@ -118,32 +121,55 @@ const Header = ({ extraClasses = "" }) => {
               >
                 <Film className="h-4 w-4" />
                 Your Movie{" "}
-              </Link>
-              <Link
-                to="/community"
-                className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
-                  pathname.includes("community")
-                    ? "text-primary bg-muted"
-                    : "text-muted-foreground"
-                } transition-all hover:text-primary`}
-              >
-                <Users className="h-4 w-4" />
-                Community
-              </Link>
-              <Link
-                to="/analytics"
-                className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
-                  pathname.includes("analytics")
-                    ? "text-primary bg-muted"
-                    : "text-muted-foreground"
-                } transition-all hover:text-primary`}
-              >
-                <LineChart className="h-4 w-4" />
-                Analytics
-              </Link>
-            </nav>
-          </SheetContent>
-        </Sheet>
+              </Link> */}
+                <Link
+                  to="/movies"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
+                    pathname.includes("movie")
+                      ? "text-primary bg-muted"
+                      : "text-muted-foreground"
+                  } transition-all hover:text-primary`}
+                >
+                  <Film className="h-4 w-4" />
+                  Movie
+                </Link>
+                <Link
+                  to="/tv-series"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
+                    pathname.includes("tv")
+                      ? "text-primary bg-muted"
+                      : "text-muted-foreground"
+                  } transition-all hover:text-primary`}
+                >
+                  <Film className="h-4 w-4" />
+                  Tv Shows
+                </Link>
+                <Link
+                  to="/community"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
+                    pathname.includes("community")
+                      ? "text-primary bg-muted"
+                      : "text-muted-foreground"
+                  } transition-all hover:text-primary`}
+                >
+                  <Users className="h-4 w-4" />
+                  Community
+                </Link>
+                <Link
+                  to="/analytics"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
+                    pathname.includes("analytics")
+                      ? "text-primary bg-muted"
+                      : "text-muted-foreground"
+                  } transition-all hover:text-primary`}
+                >
+                  <LineChart className="h-4 w-4" />
+                  Analytics
+                </Link>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
         <div className="md:flex hidden gap-8 items-center text-xl">
           <Link to={"/"} className="">
             Home

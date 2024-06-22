@@ -76,7 +76,7 @@ const Main: React.FC<Props> = ({
                 className=" hover:brightness-125 scale-[0.99] hover:scale-[1] duration-300 p-2 rounded-xl"
               >
                 <img
-                  className=" w-full 2xl:h-full xl:h-[300px] lg:h-[280px] object-cover md:h-[360px] sm:h-[300px] h-[120px]"
+                  className=" w-full 2xl:h-full xl:h-[300px] lg:h-[280px] object-cover md:h-[360px] sm:h-[300px] h-[200px]"
                   src={
                     "https://image.tmdb.org/t/p/original" + movie.poster_path
                   }

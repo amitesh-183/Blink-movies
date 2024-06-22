@@ -10,6 +10,12 @@
   transition: 0.4s linear;
 }
 
+@media screen and (max-width: 375px) {
+  .searchBox {
+    max-width: 300px;
+  }
+}
+
 .searchBox:hover {
   background-color: #2f364094;
 }

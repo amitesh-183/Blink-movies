@@ -1,10 +1,4 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import { Card, CardContent } from "../ui/card";
 import { useNavigate } from "react-router-dom";
 import useFetch from "@/hooks/UseFetch";
@@ -15,18 +9,19 @@ const Tv = () => {
   return (
     <div>
       {/*  */}
-      <div className="flex flex-col py-8">
-        <h4 className="px-28 font-bold text-2xl translate-y-7">
-          Popular Tv Shows
-        </h4>
-        <Carousel className="max-w-7xl mx-auto">
-          <CarouselContent className="pt-10">
+      <div className="flex flex-col md:py-8 pt-6 lg:px-20 md:px-10 sm:px-4 px-2">
+        <div className="flex items-center justify-between">
+          <h4 className=" font-bold text-2xl">Popular Tv Shows</h4>
+          <p>View All</p>
+        </div>
+        <Carousel className="">
+          <CarouselContent className="pt-4">
             {apiList.map((item) => (
               <CarouselItem
                 key={item.id}
-                className="basis-1/7 hover:scale-105 duration-300 ease-in-out"
+                className="basis-1/3 xl:basis-40 md:basis-1/6 sm:basis-1/4 sm:pl-2 pl-1 hover:scale-105 duration-300 ease-in-out"
               >
-                <div className="p-1">
+                <div className="p-0">
                   <Card
                     onClick={() => navigate(`/tv-info/${item.id}`)}
                     className="cursor-pointer rounded-none border-none"
@@ -39,7 +34,7 @@ const Tv = () => {
                             item.poster_path
                           }
                           alt={item.title}
-                          className="w-full object-cover h-[210px]"
+                          className="w-full object-cover sm:h-[210px] h-[180px]"
                         />
                       </span>
                     </CardContent>
@@ -48,8 +43,8 @@ const Tv = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          {/* <CarouselPrevious />
+          <CarouselNext /> */}
         </Carousel>
       </div>
       {/*  */}

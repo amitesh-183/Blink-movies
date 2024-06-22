@@ -1,10 +1,4 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import { Card, CardContent } from "../ui/card";
 import { useNavigate } from "react-router-dom";
 import useFetch from "@/hooks/UseFetch";
@@ -15,18 +9,19 @@ const PopularMovies = () => {
   return (
     <>
       {/* Popular Movie List */}
-      <div className="py-8">
-        <h4 className="px-28 font-bold text-2xl translate-y-7">
-          Popular Movies
-        </h4>
-        <Carousel className="max-w-7xl mx-auto">
-          <CarouselContent className="pt-10">
+      <div className="md:py-8 lg:px-20 md:px-10 sm:px-4 px-2">
+        <div className="flex items-center justify-between">
+          <h4 className=" font-bold text-2xl">Popular Movies</h4>
+          <p>View All</p>
+        </div>
+        <Carousel className="">
+          <CarouselContent className="pt-4">
             {apiList.map((item) => (
               <CarouselItem
                 key={item.id}
-                className="basis-1/7 hover:scale-105 duration-300 ease-in-out"
+                className="basis-1/3 xl:basis-40 md:basis-1/6 sm:basis-1/4 hover:scale-105 sm:pl-2 pl-1 duration-300 ease-in-out"
               >
-                <div className="p-1">
+                <div className="p-0">
                   <Card
                     onClick={() => navigate(`/movie-info/${item.id}`)}
                     className="cursor-pointer p-0 rounded-none border-none"
@@ -39,7 +34,7 @@ const PopularMovies = () => {
                             item.poster_path
                           }
                           alt={item.title}
-                          className="w-full h-[210px]"
+                          className="w-full object-cover sm:h-[210px] h-[180px]"
                         />
                       </span>
                     </CardContent>
@@ -48,8 +43,8 @@ const PopularMovies = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          {/* <CarouselPrevious />
+          <CarouselNext /> */}
         </Carousel>
       </div>
       {/* {/* Popular Movie List */}
