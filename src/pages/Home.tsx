@@ -2,7 +2,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import MovieGenreList from "@/components/Home/MovieGenreList";
+// import MovieGenreList from "@/components/Home/MovieGenreList";
 import PopularMovies from "@/components/Home/PopularMovies";
 import Tv from "@/components/Home/Tv";
 
