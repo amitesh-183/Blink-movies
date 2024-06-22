@@ -17,7 +17,7 @@ export function Home() {
       {/* Popular movie list */}
       <PopularMovies />
       <Tv />
-      <MovieGenreList />
+      {/* <MovieGenreList /> */}
       <Footer />
     </>
   );
