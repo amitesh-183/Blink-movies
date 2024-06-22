@@ -175,7 +175,7 @@ const Footer = () => {
             <div className="cursor-pointer flex items-center justify-between border border-gray-800 dark:border-white mt-4">
               <input
                 type="text"
-                className="text-base leading-4 p-4 w-full focus:outline-none text-gray-800 dark:text-white dark:placeholder-white dark:bg-gray-900 dark:border-white placeholder-gray-800"
+                className="text-base leading-4 p-4 w-full focus:outline-none text-gray-800 dark:text-white dark:placeholder-white bg-transparent dark:border-white placeholder-gray-800"
                 placeholder="Enter your email"
               />
               <button
@@ -206,7 +206,7 @@ const Footer = () => {
           <div className="flex items-center justify-between border border-gray-800 dark:border-white mt-4">
             <input
               type="text"
-              className="text-base leading-4 p-4 relative z-0 w-full focus:outline-none text-gray-800 placeholder-gray-800 dark:text-white dark:placeholder-white dark:border-white dark:bg-gray-900"
+              className="text-base leading-4 p-4 relative z-0 w-full focus:outline-none text-gray-800 placeholder-gray-800 dark:text-white dark:placeholder-white dark:border-white bg-transparent"
               placeholder="Enter your email"
             />
             <button

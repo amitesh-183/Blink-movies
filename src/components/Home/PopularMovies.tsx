@@ -1,6 +1,6 @@
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import { Card, CardContent } from "../ui/card";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useFetch from "@/hooks/UseFetch";
 
 const PopularMovies = () => {
@@ -11,8 +11,10 @@ const PopularMovies = () => {
       {/* Popular Movie List */}
       <div className="md:py-8 lg:px-20 md:px-10 sm:px-4 px-2">
         <div className="flex items-center justify-between">
-          <h4 className=" font-bold text-2xl">Popular Movies</h4>
-          <p>View All</p>
+          <h4 className=" font-bold sm:text-2xl text-lg">Popular Movies</h4>
+          <Link to="/movies" className="sm:text-base text-xs">
+            View All
+          </Link>
         </div>
         <Carousel className="">
           <CarouselContent className="pt-4">

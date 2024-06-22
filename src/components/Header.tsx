@@ -7,17 +7,17 @@ import {
   // CircleUser,
   Film,
   Home,
-  LineChart,
+  // LineChart,
   Menu,
   Search,
   // Moon,
-  ShoppingCart,
+  // ShoppingCart,
   // Sun,
-  Users,
+  // Users,
 } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../favicon-32x32.png";
-import { Badge } from "./ui/badge";
+// import { Badge } from "./ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -97,7 +97,7 @@ const Header = ({ extraClasses = "" }) => {
                   <Home className="h-4 w-4" />
                   Home
                 </Link>
-                <Link
+                {/* <Link
                   to="/genres"
                   className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
                     pathname.includes("genres")
@@ -110,7 +110,7 @@ const Header = ({ extraClasses = "" }) => {
                   <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                     6
                   </Badge>
-                </Link>
+                </Link> */}
                 {/* <Link
                 to="/upload"
                 className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
@@ -144,7 +144,7 @@ const Header = ({ extraClasses = "" }) => {
                   <Film className="h-4 w-4" />
                   Tv Shows
                 </Link>
-                <Link
+                {/* <Link
                   to="/community"
                   className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
                     pathname.includes("community")
@@ -154,8 +154,8 @@ const Header = ({ extraClasses = "" }) => {
                 >
                   <Users className="h-4 w-4" />
                   Community
-                </Link>
-                <Link
+                </Link> */}
+                {/* <Link
                   to="/analytics"
                   className={`flex items-center gap-3 rounded-lg px-3 py-2 ${
                     pathname.includes("analytics")
@@ -165,7 +165,7 @@ const Header = ({ extraClasses = "" }) => {
                 >
                   <LineChart className="h-4 w-4" />
                   Analytics
-                </Link>
+                </Link> */}
               </nav>
             </SheetContent>
           </Sheet>

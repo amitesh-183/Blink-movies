@@ -91,3 +91,7 @@
   background: transparent;
   width: 5px;
 }
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
