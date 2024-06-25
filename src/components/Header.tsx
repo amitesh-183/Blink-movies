@@ -65,8 +65,8 @@ const Header = ({ extraClasses = "" }) => {
         className={`flex justify-between items-center border-b text-white w-full left-0 z-10 md:px-10 px-4 py-2 ${extraClasses}`}
       >
         <Link to={"/"} className="flex gap-1 items-center">
-          <h3 className="font-black text-3xl tracking-wide">Blink</h3>
-          <img src={logo} className="w-10 h-10" alt="Blink-Movie-Icon" />
+          <h3 className="font-black text-3xl tracking-wide">Sinema</h3>
+          <img src={logo} className="w-10 h-10" alt="Sinema-Movie-Icon" />
         </Link>
         <div className="flex gap-4 items-center">
           <Search className="md:hidden" />
@@ -84,7 +84,7 @@ const Header = ({ extraClasses = "" }) => {
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
                   <img src={logo} alt="blink" className="h-10 w-10" />
-                  <span className="sr-only">Wink</span>
+                  <span className="sr-only">Blink</span>
                 </Link>
                 <Link
                   to="/"
