@@ -10,9 +10,9 @@ import {
   // LineChart,
   Menu,
   Search,
-  // Moon,
+  Moon,
   // ShoppingCart,
-  // Sun,
+  Sun,
   // Users,
 } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -21,14 +21,14 @@ import logo from "../../favicon-32x32.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  // DropdownMenuItem,
+  DropdownMenuItem,
   // DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   // DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-// import { useTheme } from "@/context/ThemeProvider";
+import { useTheme } from "@/context/ThemeProvider";
 import { useState } from "react";
 import { useGenres } from "@/context/Genre";
 import { Separator } from "./ui/separator";
@@ -42,7 +42,7 @@ interface Genre {
 }
 
 const Header = ({ extraClasses = "" }) => {
-  // const { setTheme } = useTheme();
+  const { setTheme } = useTheme();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [genreName, setGenreName] = useState<string | undefined>(undefined);
@@ -62,7 +62,7 @@ const Header = ({ extraClasses = "" }) => {
   return (
     <>
       <div
-        className={`flex justify-between items-center border-b text-white w-full left-0 z-10 md:px-10 px-4 py-2 ${extraClasses}`}
+        className={`flex justify-between items-center border-b dark:text-white w-full left-0 z-10 md:px-10 px-4 py-2 ${extraClasses}`}
       >
         <Link to={"/"} className="flex gap-1 items-center">
           <h3 className="font-black text-3xl tracking-wide">Sinema</h3>
@@ -181,7 +181,7 @@ const Header = ({ extraClasses = "" }) => {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="text-xl hover:bg-transparent p-0 font-semibold"
+                className="text-xl hover:bg-transparent p-0 font-normal"
               >
                 {genreName || "Genres"}{" "}
                 <ChevronDown size={14} className="mt-2 ms-1" />
@@ -216,7 +216,7 @@ const Header = ({ extraClasses = "" }) => {
             <Bell className="h-4 w-4" />
             <span className="sr-only">Toggle notifications</span>
           </Button> */}
-          {/* <DropdownMenu>
+          <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon">
                 <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -235,7 +235,7 @@ const Header = ({ extraClasses = "" }) => {
                 System
               </DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu> */}
+          </DropdownMenu>
           {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">

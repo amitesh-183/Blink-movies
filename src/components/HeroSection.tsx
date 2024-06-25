@@ -48,7 +48,7 @@ const HeroSection: React.FC<Props> = ({ url }) => {
   };
   return (
     <>
-      <div className=" absolute text-white z-10 w-full top-[16%] left-1/2 flex justify-center translate-x-[-50%] translate-y-[-50%]">
+      <div className=" absolute dark:text-white z-10 w-full top-[16%] left-1/2 flex justify-center translate-x-[-50%] translate-y-[-50%]">
         <div className="flex flex-col gap-2 justify-center items-center">
           <h2 className="text-3xl font-bold">Blink Search</h2>
           <div className="searchBox">
@@ -120,7 +120,7 @@ const HeroSection: React.FC<Props> = ({ url }) => {
                 <Card className="border-none">
                   <CardContent className="flex lg:h-screen h-[600px] w-full p-0 text-white items-center justify-center relative">
                     <div className="bg-black/30 absolute inset-0"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
+                    <div className="absolute inset-0 dark:bg-gradient-to-t from-background via-transparent to-background"></div>
                     <div className="absolute md:left-20 left-10 md:bottom-[20%] bottom-[10%] md:w-[70%] w-[80%]">
                       <h1 className="font-black md:text-7xl text-4xl py-6">
                         {item.title}
