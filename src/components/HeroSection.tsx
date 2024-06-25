@@ -146,7 +146,9 @@ const HeroSection: React.FC<Props> = ({ url }) => {
                         </div>
                       </div>
                       <div className="flex gap-4">
-                        <Button variant={"outline"}>Watch Trailer</Button>
+                        <Button variant={"outline"} className="bg-black">
+                          Watch Trailer
+                        </Button>
                         {/* <Button className="bg-pink-700 text-white flex gap-1 items-center">
                           <BiPlay className="w-6 h-6" />
                           Watch Now

@@ -10,11 +10,16 @@ import "./App.css";
 import Player from "./components/Player";
 import TvShows from "./pages/TvShows";
 import Details from "./pages/Details";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/*",
+    element: <Error />,
   },
   {
     path: "/search",

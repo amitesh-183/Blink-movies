@@ -39,13 +39,13 @@ const Details = () => {
       <Header extraClasses="border-b-0" />
       <div>
         <div className="backdrop-img relative">
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
-          <div className="absolute inset-0 bg-background/30"></div>
+          <div className="absolute inset-0 dark:bg-gradient-to-t from-background via-transparent to-background"></div>
+          <div className="absolute inset-0 dark:bg-background/30"></div>
           {apiList?.backdrop_path && (
             <img
               src={`https://image.tmdb.org/t/p/original${apiList.backdrop_path}`}
               alt={type === "tv" ? apiList.name : apiList.original_title}
-              className="2xl:[700px] md:h-[560px] h-[300px] w-full object-cover"
+              className="2xl:[700px] md:h-[560px] h-[300px] w-full"
             />
           )}
         </div>
@@ -54,17 +54,19 @@ const Details = () => {
             <div className="poster-area">
               {apiList?.poster_path && (
                 <img
-                  src={`https://image.tmdb.org/t/p/original${apiList.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w500${apiList.poster_path}`}
                   alt=""
                   className="md:h-[360px] h-[240px] md:min-w-[300px] md:max-w-[420px] w-[200px] rounded-lg"
                 />
               )}
             </div>
             <div className="details-area 2xl:max-w-4xl md:max-w-2xl w-full">
-              <h2 className="font-semibold md:text-4xl text-3xl">
+              <h2 className="font-semibold md:text-4xl text-3xl text-white">
                 {type === "tv" ? apiList?.name : apiList?.original_title}
               </h2>
-              <p className="py-3 md:text-xl text-base">{apiList?.overview}</p>
+              <p className="py-3 md:text-xl text-base text-white">
+                {apiList?.overview}
+              </p>
               <ul className="flex items-center gap-4 sm:w-fit w-[90%] hide-scroll overflow-x-auto">
                 {apiList?.genres?.map((genre: { id: number; name: string }) => (
                   <li
