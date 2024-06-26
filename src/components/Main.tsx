@@ -68,9 +68,11 @@ const Main: React.FC<Props> = ({
                 // onClick={() => navigate(`/player/${movie.id}`)}
                 onClick={() =>
                   navigate(
-                    `/${pathname.includes("/tv") ? "tv" : "movie"}-info/${
-                      movie.id
-                    }`
+                    `/${
+                      pathname.includes("/tv") || movie.media_type === "tv"
+                        ? "tv"
+                        : "movie"
+                    }-info/${movie.id}`
                   )
                 }
                 className=" hover:brightness-125 scale-[0.99] hover:scale-[1] duration-300 p-2 rounded-xl"

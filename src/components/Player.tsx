@@ -1,8 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const Player = () => {
   const { playerId } = useParams();
-  const movieUrl = `https://vidsrc.xyz/embed/movie/${playerId}`;
+  const { pathname } = useLocation();
+  const movieUrl = `https://vidsrc.xyz/embed/${
+    pathname.includes("/tv") ? "tv" : "movie"
+  }/${playerId}`;
   return (
     <div>
       <iframe

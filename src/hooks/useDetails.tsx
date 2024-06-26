@@ -9,6 +9,18 @@ interface Genre {
   name: string;
 }
 
+interface Episode {
+  id: number;
+  name: string;
+  overview: string;
+}
+
+interface Season {
+  season_number: number;
+  name: string;
+  episodes?: Episode[];
+}
+
 interface DetailsProps {
   id: number;
   name?: string;
@@ -21,6 +33,7 @@ interface DetailsProps {
   release_date: string;
   original_language: string;
   revenue: number;
+  seasons?: Season[];
 }
 
 // DetailsResponse should reflect the actual structure of the API response
@@ -36,6 +49,7 @@ interface DetailsResponse {
   release_date: string;
   original_language: string;
   revenue: number;
+  seasons?: Season[];
 }
 
 const useDetails = (url: string) => {

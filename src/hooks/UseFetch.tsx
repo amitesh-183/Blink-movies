@@ -4,6 +4,9 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 const token = import.meta.env.VITE_API_TOKEN_KEY as string;
 const baseUrl = import.meta.env.VITE_API_BASE_URL as string;
 
+console.log("token", token);
+console.log("base-url", baseUrl);
+
 interface MovieProps {
   id: number;
   title: string;
@@ -15,6 +18,7 @@ interface MovieProps {
   vote_average: number;
   release_date: React.ReactNode;
   overview: string;
+  media_type: string;
 }
 
 interface MovieResponse {

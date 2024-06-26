@@ -2,7 +2,13 @@ import { BsFillPlayFill } from "react-icons/bs";
 import Header from "@/components/Header";
 import useDetails from "@/hooks/useDetails";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
+
+interface Episode {
+  id: number;
+  name: string;
+  overview: string;
+}
 
 const Details = () => {
   const { movieId } = useParams<{ movieId: string }>();
@@ -25,7 +31,6 @@ const Details = () => {
     return "";
   }, [apiList]);
 
-  // show revenue in crores
   const revenue = useMemo(() => {
     if (apiList?.revenue) {
       const revenueInCrores = (apiList.revenue / 1000000000).toFixed(2);
@@ -33,6 +38,22 @@ const Details = () => {
     }
     return "";
   }, [apiList]);
+
+  const [selectedSeason, setSelectedSeason] = useState<number | null>(null);
+  const [episodes, setEpisodes] = useState<Episode[]>([]);
+
+  useEffect(() => {
+    if (selectedSeason !== null && apiList?.seasons) {
+      const season = apiList.seasons.find(
+        (season) => season.season_number === selectedSeason
+      );
+      if (season) {
+        setEpisodes(season.episodes || []);
+      } else {
+        setEpisodes([]);
+      }
+    }
+  }, [selectedSeason, apiList]);
 
   return (
     <>
@@ -78,9 +99,11 @@ const Details = () => {
                 ))}
               </ul>
               <div className="py-4">
-                <p className="py-1 font-semibold">
-                  Release Date : {apiList?.release_date}
-                </p>
+                {apiList?.release_date && (
+                  <p className="py-1 font-semibold">
+                    Release Date : {apiList?.release_date}
+                  </p>
+                )}
                 <p className="py-1 font-semibold">Time : {runtime}</p>
                 <p className="py-1 font-semibold">
                   Language :{" "}
@@ -88,7 +111,9 @@ const Details = () => {
                     ? "English"
                     : apiList?.original_language}
                 </p>
-                <p className="py-1 font-semibold">Revenue : {revenue}Cr.</p>
+                {revenue && (
+                  <p className="py-1 font-semibold">Revenue : {revenue}Cr.</p>
+                )}
               </div>
             </div>
           </div>
@@ -105,6 +130,56 @@ const Details = () => {
               Watch Now
             </button>
           </div>
+          {apiList?.seasons && (
+            <div className="lg:px-20 md:px-10 px-4 py-6">
+              <h3 className="font-semibold md:text-3xl text-2xl text-white">
+                Seasons
+              </h3>
+              <ul className="flex flex-wrap gap-4 mt-4">
+                {apiList?.seasons?.map(
+                  (season: { season_number: number; name: string }) => (
+                    <li
+                      key={season.season_number}
+                      className={`cursor-pointer px-4 py-2 rounded-lg ${
+                        selectedSeason === season.season_number
+                          ? "bg-blue-600"
+                          : "bg-gray-800"
+                      }`}
+                      onClick={() => setSelectedSeason(season.season_number)}
+                    >
+                      {season.name}
+                    </li>
+                  )
+                )}
+              </ul>
+              {selectedSeason !== null && episodes.length > 0 && (
+                <div className="mt-6">
+                  <h3 className="font-semibold md:text-3xl text-2xl text-white">
+                    Episodes
+                  </h3>
+                  <ul className="flex flex-col gap-4">
+                    {episodes?.map(
+                      (episode: {
+                        id: number;
+                        name: string;
+                        overview: string;
+                      }) => (
+                        <li
+                          key={episode.id}
+                          className="bg-gray-800 p-4 rounded-lg"
+                        >
+                          <h4 className="font-semibold md:text-2xl text-xl text-white">
+                            {episode.name}
+                          </h4>
+                          <p className="text-white">{episode.overview}</p>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </>
