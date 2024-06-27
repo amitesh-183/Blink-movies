@@ -18,7 +18,6 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/*",
     element: <Error />,
   },
   {
