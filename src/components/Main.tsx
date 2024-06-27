@@ -1,4 +1,4 @@
-import useFetch from "@/hooks/UseFetch";
+import { useFetch } from "@/hooks/UseFetch";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";

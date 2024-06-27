@@ -33,7 +33,7 @@ import { useState } from "react";
 import { useGenres } from "@/context/Genre";
 import { Separator } from "./ui/separator";
 // import useFetch from "@/hooks/UseFetch";
-import useGenre from "@/hooks/useGenre";
+import { useGenre } from "@/hooks/useGenre";
 // import { useEffect } from "react";
 
 interface Genre {

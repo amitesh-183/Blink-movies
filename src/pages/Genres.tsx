@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 // import Sidebar from "@/components/Sidebar";
-import useGenre from "@/hooks/useGenre";
+import { useGenre } from "@/hooks/useGenre";
 
 const Genres = () => {
   const { apiList } = useGenre("/genre/movie/list");

@@ -1,7 +1,7 @@
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import { Card, CardContent } from "../ui/card";
 import { Link, useNavigate } from "react-router-dom";
-import useFetch from "@/hooks/UseFetch";
+import { useFetch } from "@/hooks/UseFetch";
 
 const Tv = () => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { BiSearch } from "react-icons/bi";
 import imdb from "../assets/imdb.svg";
-import useFetch from "@/hooks/UseFetch";
+import { useFetch } from "@/hooks/UseFetch";
 import {
   Carousel,
   CarouselContent,

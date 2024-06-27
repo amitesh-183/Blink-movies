@@ -1,6 +1,6 @@
 import { BsFillPlayFill } from "react-icons/bs";
 import Header from "@/components/Header";
-import useDetails from "@/hooks/useDetails";
+import { useDetails } from "@/hooks/useDetails";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useMemo, useState, useEffect } from "react";
 
@@ -22,6 +22,8 @@ const Details = () => {
 
   const { apiList } = useDetails(`/${type}/${movieId}`);
 
+  console.log(apiList);
+
   const runtime = useMemo(() => {
     if (apiList?.runtime) {
       const hours = Math.floor(apiList.runtime / 60);
@@ -41,6 +43,8 @@ const Details = () => {
 
   const [selectedSeason, setSelectedSeason] = useState<number | null>(null);
   const [episodes, setEpisodes] = useState<Episode[]>([]);
+
+  console.log(episodes);
 
   useEffect(() => {
     if (selectedSeason !== null && apiList?.seasons) {
@@ -124,7 +128,15 @@ const Details = () => {
             </button>
             <button
               className="lg:px-10 px-4 bg-pink-600 font-bold md:text-lg text-sm flex items-center md:gap-2 gap-1 rounded-lg py-3"
-              onClick={() => navigate(`/player/${apiList?.id}`)}
+              onClick={() => {
+                if (type === "tv" && selectedSeason !== null) {
+                  navigate(
+                    `/player/${movieId}/season/${selectedSeason}/episode/${episodes[0]?.id}`
+                  );
+                } else {
+                  navigate(`/player/${apiList?.id}`);
+                }
+              }}
             >
               <BsFillPlayFill className="md:w-[20px]" />
               Watch Now

@@ -52,7 +52,7 @@ interface DetailsResponse {
   seasons?: Season[];
 }
 
-const useDetails = (url: string) => {
+export const useDetails = (url: string) => {
   const [apiList, setApiList] = useState<DetailsProps | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -85,5 +85,3 @@ const useDetails = (url: string) => {
 
   return { apiList, loading };
 };
-
-export default useDetails;

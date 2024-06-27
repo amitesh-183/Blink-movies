@@ -66,6 +66,10 @@ const router = createBrowserRouter([
     element: <Player />,
   },
   {
+    path: "/player/:playerId/season/:season/episode/:episode",
+    element: <Player />,
+  },
+  {
     path: "/tv-series",
     element: <TvShows />,
   },

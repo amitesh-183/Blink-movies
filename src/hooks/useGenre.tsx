@@ -13,7 +13,7 @@ interface GenreResponse {
   genres: GenreProps[];
 }
 
-const useGenre = (url: string) => {
+export const useGenre = (url: string) => {
   const [apiList, setApiList] = useState<GenreProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -46,5 +46,3 @@ const useGenre = (url: string) => {
 
   return { apiList, loading };
 };
-
-export default useGenre;

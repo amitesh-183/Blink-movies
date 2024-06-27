@@ -4,8 +4,8 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 const token = import.meta.env.VITE_API_TOKEN_KEY as string;
 const baseUrl = import.meta.env.VITE_API_BASE_URL as string;
 
-console.log("token", token);
-console.log("base-url", baseUrl);
+// console.log("token", token);
+// console.log("base-url", baseUrl);
 
 interface MovieProps {
   id: number;
@@ -25,7 +25,11 @@ interface MovieResponse {
   results: MovieProps[];
 }
 
-const useFetch = (url: string, genreId?: number, searchQuery?: string) => {
+export const useFetch = (
+  url: string,
+  genreId?: number,
+  searchQuery?: string
+) => {
   const [apiList, setApiList] = useState<MovieProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -40,6 +44,7 @@ const useFetch = (url: string, genreId?: number, searchQuery?: string) => {
       with_genres: genreId,
       query: searchQuery,
     },
+    timeout: 10000,
   };
   useEffect(() => {
     fetchMovies();
@@ -61,5 +66,3 @@ const useFetch = (url: string, genreId?: number, searchQuery?: string) => {
 
   return { apiList, loading };
 };
-
-export default useFetch;
