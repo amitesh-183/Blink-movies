@@ -50,11 +50,6 @@ const Main: React.FC<Props> = ({
                 <h4 className="font-bold text-xl text-ellipsis text-nowrap w-full overflow-hidden py-4">
                   <Skeleton className="h-4 w-full" />
                 </h4>
-                {/* <p className="line-clamp-3 space-y-1">
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-full" />
-                </p> */}
               </div>
             ))}
           </div>

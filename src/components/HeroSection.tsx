@@ -48,7 +48,7 @@ const HeroSection: React.FC<Props> = ({ url }) => {
   };
   return (
     <>
-      <div className=" absolute dark:text-white z-10 w-full top-[16%] left-1/2 flex justify-center translate-x-[-50%] translate-y-[-50%]">
+      <div className=" absolute dark:text-white z-10 w-full top-[18%] left-1/2 flex justify-center translate-x-[-50%] translate-y-[-50%]">
         <div className="flex flex-col gap-2 justify-center items-center">
           <h2 className="text-3xl font-bold">Blink Search</h2>
           <div className="searchBox">
@@ -58,7 +58,7 @@ const HeroSection: React.FC<Props> = ({ url }) => {
               name=""
               value={searchQuery || ""}
               onChange={handleSearchInputChange}
-              placeholder="Search something"
+              placeholder="search movies/tv-shows/genres..."
               onKeyUp={handleSearchPress}
             />
             <button
@@ -73,40 +73,6 @@ const HeroSection: React.FC<Props> = ({ url }) => {
           </div>
         </div>
       </div>
-      <div className="flex absolute bottom-2 right-4 z-10">
-        <Carousel className="md:max-w-4xl max-w-sm md:ms-auto mx-auto">
-          <CarouselContent className="pt-10">
-            {apiList.map((item) => (
-              <CarouselItem
-                key={item.id}
-                className="md:basis-1/5 basis-1/3 hover:scale-105 z-30 duration-300 ease-in-out"
-              >
-                <div className="p-1">
-                  <Card
-                    onClick={() => navigate(`/movie-info/${item.id}`)}
-                    className="cursor-pointer rounded-none"
-                  >
-                    <CardContent className="flex aspect-auto items-center justify-center p-0">
-                      <span className="text-4xl font-semibold">
-                        <img
-                          src={
-                            "https://image.tmdb.org/t/p/original" +
-                            item.poster_path
-                          }
-                          alt={item.title}
-                          className="w-full h-full"
-                        />
-                      </span>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-      </div>
       <Carousel
         plugins={[plugin.current]}
         // onMouseEnter={plugin.current.stop}
@@ -115,13 +81,14 @@ const HeroSection: React.FC<Props> = ({ url }) => {
       >
         <CarouselContent>
           {apiList.map((item) => (
-            <CarouselItem key={item.id} className=" p-0 m-0 border-0">
+            <CarouselItem key={item.id} className="p-0 m-0 border-0">
               <div className="">
                 <Card className="border-none">
-                  <CardContent className="flex lg:h-screen h-[600px] w-full p-0 text-white items-center justify-center relative">
+                  <CardContent className="flex h-screen w-full p-0 text-white items-center justify-center relative">
                     <div className="bg-black/30 absolute inset-0"></div>
                     <div className="absolute inset-0 dark:bg-gradient-to-t from-background via-transparent to-background"></div>
-                    <div className="absolute md:left-20 left-10 md:bottom-[20%] bottom-[10%] md:w-[70%] w-[80%]">
+                    <div className="absolute inset-0 dark:bg-gradient-to-r from-background to-transparent"></div>
+                    <div className="absolute md:left-20 left-10 md:bottom-[30%] bottom-[40%] md:w-[70%] w-[80%]">
                       <h1 className="font-black md:text-7xl text-4xl py-6">
                         {item.title}
                       </h1>
@@ -171,6 +138,40 @@ const HeroSection: React.FC<Props> = ({ url }) => {
           ))}
         </CarouselContent>
       </Carousel>
+      <div className="flex absolute bottom-2 my-3 md:right-4 z-10">
+        <Carousel className="md:max-w-4xl max-w-sm md:ms-auto mx-auto">
+          <CarouselContent className="pt-10">
+            {apiList.map((item) => (
+              <CarouselItem
+                key={item.id}
+                className="md:basis-1/5 basis-1/3 hover:scale-105 z-30 duration-300 ease-in-out"
+              >
+                <div className="p-1">
+                  <Card
+                    onClick={() => navigate(`/movie-info/${item.id}`)}
+                    className="cursor-pointer rounded-none"
+                  >
+                    <CardContent className="flex aspect-auto items-center justify-center p-0">
+                      <span className="text-4xl font-semibold">
+                        <img
+                          src={
+                            "https://image.tmdb.org/t/p/original" +
+                            item.poster_path
+                          }
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </span>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
     </>
   );
 };

@@ -22,7 +22,7 @@ const Details = () => {
 
   const { apiList } = useDetails(`/${type}/${movieId}`);
 
-  console.log(apiList);
+  // console.log(apiList);
 
   const runtime = useMemo(() => {
     if (apiList?.runtime) {
@@ -44,7 +44,7 @@ const Details = () => {
   const [selectedSeason, setSelectedSeason] = useState<number | null>(null);
   const [episodes, setEpisodes] = useState<Episode[]>([]);
 
-  console.log(episodes);
+  // console.log(episodes);
 
   useEffect(() => {
     if (selectedSeason !== null && apiList?.seasons) {
@@ -70,18 +70,18 @@ const Details = () => {
             <img
               src={`https://image.tmdb.org/t/p/original${apiList.backdrop_path}`}
               alt={type === "tv" ? apiList.name : apiList.original_title}
-              className="2xl:[700px] md:h-[560px] h-[300px] w-full"
+              className="2xl:[900px] md:h-[700px] h-[300px] w-full object-cover"
             />
           )}
         </div>
-        <div className="absolute md:top-80 w-full top-40">
+        <div className="absolute md:top-96 w-full top-40">
           <div className="lg:px-20 md:px-10 px-4 flex md:flex-row flex-col gap-8 py-6">
             <div className="poster-area">
               {apiList?.poster_path && (
                 <img
                   src={`https://image.tmdb.org/t/p/w500${apiList.poster_path}`}
                   alt=""
-                  className="md:h-[360px] h-[240px] md:min-w-[300px] md:max-w-[420px] w-[200px] rounded-lg"
+                  className="md:h-[360px] h-[240px] md:min-w-[260px] md:max-w-[370px] w-[200px] rounded-lg"
                 />
               )}
             </div>

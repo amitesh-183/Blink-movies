@@ -192,12 +192,31 @@ const Header = ({ extraClasses = "" }) => {
           </Sheet>
         </div>
         <div className="md:flex hidden gap-8 items-center text-xl">
-          <Link to={"/"} className="">
+          <Link
+            to={"/"}
+            className={`${
+              pathname.endsWith("/") ? "text-pink-600 font-bold" : ""
+            }`}
+          >
             Home
           </Link>
           {/* <Link to={"/genres"}>Genre</Link> */}
-          <Link to={"/movies"}>Movie</Link>
-          <Link to={"/tv-series"}>TV Series</Link>
+          <Link
+            to={"/movies"}
+            className={`${
+              pathname.includes("/movies") ? "text-pink-600 font-bold" : ""
+            }`}
+          >
+            Movie
+          </Link>
+          <Link
+            to={"/tv-series"}
+            className={`${
+              pathname.includes("/tv") ? "text-pink-600 font-bold" : ""
+            }`}
+          >
+            TV Series
+          </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
@@ -228,7 +247,7 @@ const Header = ({ extraClasses = "" }) => {
           </DropdownMenu>
           <Separator orientation="vertical" className="w-0.5 mt-2 h-6" />
           <Link to={""} className="mt-2">
-            <BiSearch size={24} />
+            <BiSearch size={24} onClick={() => navigate("/search")} />
           </Link>
           {/* <Link to="#" className="text-lg font-semibold">
             Community
@@ -241,7 +260,7 @@ const Header = ({ extraClasses = "" }) => {
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="border-none" size="icon">
                 <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <Moon className="absolute h-[1.4rem] w-[1.4rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                 <span className="sr-only">Toggle theme</span>
               </Button>
             </DropdownMenuTrigger>

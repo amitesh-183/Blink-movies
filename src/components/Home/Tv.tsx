@@ -1,4 +1,10 @@
-import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
 import { Card, CardContent } from "../ui/card";
 import { Link, useNavigate } from "react-router-dom";
 import { useFetch } from "@/hooks/UseFetch";
@@ -45,8 +51,8 @@ const Tv = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          {/* <CarouselPrevious />
-          <CarouselNext /> */}
+          <CarouselPrevious className="-left-5 top-1/2 md:flex hidden" />
+          <CarouselNext className="-right-5 top-1/2 md:flex hidden" />
         </Carousel>
       </div>
       {/*  */}

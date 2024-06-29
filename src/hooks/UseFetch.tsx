@@ -44,7 +44,6 @@ export const useFetch = (
       with_genres: genreId,
       query: searchQuery,
     },
-    timeout: 10000,
   };
   useEffect(() => {
     fetchMovies();
