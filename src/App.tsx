@@ -18,9 +18,6 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    element: <Error />,
-  },
-  {
     path: "/search",
     element: <Search />,
   },
@@ -65,12 +62,12 @@ const router = createBrowserRouter([
     element: <Player />,
   },
   {
-    path: "/player/:playerId/season/:season/episode/:episode",
-    element: <Player />,
-  },
-  {
     path: "/tv-series",
     element: <TvShows />,
+  },
+  {
+    path: "*",
+    element: <Error />,
   },
 ]);
 

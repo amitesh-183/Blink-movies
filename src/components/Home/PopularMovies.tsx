@@ -17,7 +17,7 @@ interface PopularMoviesProps {
 const PopularMovies: React.FC<PopularMoviesProps> = ({ category }) => {
   const navigate = useNavigate();
   const { apiList, loading } = useFetch(`/movie/${category}`);
-  console.log(apiList);
+  // console.log(apiList);
   return (
     <>
       {/* Popular Movie List */}

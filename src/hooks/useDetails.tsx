@@ -19,6 +19,7 @@ interface Season {
   season_number: number;
   name: string;
   episodes?: Episode[];
+  episode_count: number;
 }
 
 interface DetailsProps {

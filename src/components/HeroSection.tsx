@@ -139,8 +139,8 @@ const HeroSection: React.FC<Props> = ({ url }) => {
         </CarouselContent>
       </Carousel>
       <div className="flex absolute bottom-2 my-3 md:right-4 z-10">
-        <Carousel className="md:max-w-4xl max-w-sm md:ms-auto mx-auto">
-          <CarouselContent className="pt-10">
+        <Carousel className="md:max-w-4xl sm:max-w-sm w-full md:ms-auto mx-auto">
+          <CarouselContent className="pt-10 w-full">
             {apiList.map((item) => (
               <CarouselItem
                 key={item.id}
