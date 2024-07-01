@@ -3,14 +3,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import noPoster from "../assets/no-poster.webp";
-// import {
-//   Carousel,
-//   CarouselContent,
-//   CarouselItem,
-//   CarouselNext,
-//   CarouselPrevious,
-// } from "./ui/carousel";
-// import { CardContent } from "./ui/card";
 
 type Props = {
   sectionTitle: string;
@@ -35,7 +27,7 @@ const Main: React.FC<Props> = ({
   const effectiveEnd = end !== undefined ? end : apiList.length;
 
   return (
-    <main className="flex flex-1 flex-col gap-4 md:p-4 p-2 lg:gap-6 lg:p-6 w-full">
+    <main className="flex flex-1 flex-col md:p-4 p-2 lg:p-6 w-full">
       <div className="flex items-center">
         <h1 className="text-lg font-semibold md:text-2xl">{sectionTitle}</h1>
       </div>
