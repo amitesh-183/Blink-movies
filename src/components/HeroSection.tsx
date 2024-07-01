@@ -88,7 +88,7 @@ const HeroSection: React.FC<Props> = ({ url }) => {
                     <div className="bg-black/30 absolute inset-0"></div>
                     <div className="absolute inset-0 dark:bg-gradient-to-t from-background via-transparent to-background"></div>
                     <div className="absolute inset-0 dark:bg-gradient-to-r from-background to-transparent"></div>
-                    <div className="absolute md:left-20 left-10 md:bottom-[30%] bottom-[20%] md:w-[70%] w-[80%]">
+                    <div className="absolute md:left-20 left-10 md:bottom-[30%] bottom-[26%] md:w-[70%] w-[80%]">
                       <h1 className="font-black md:text-7xl text-4xl py-6">
                         {item.title}
                       </h1>
