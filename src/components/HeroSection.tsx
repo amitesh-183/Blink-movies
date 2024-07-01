@@ -84,18 +84,18 @@ const HeroSection: React.FC<Props> = ({ url }) => {
             <CarouselItem key={item.id} className="p-0 m-0 border-0">
               <div className="">
                 <Card className="border-none">
-                  <CardContent className="flex h-screen w-full p-0 text-white items-center justify-center relative">
+                  <CardContent className="flex md:h-screen h-[90vh] w-full p-0 text-white items-center justify-center relative">
                     <div className="bg-black/30 absolute inset-0"></div>
                     <div className="absolute inset-0 dark:bg-gradient-to-t from-background via-transparent to-background"></div>
                     <div className="absolute inset-0 dark:bg-gradient-to-r from-background to-transparent"></div>
-                    <div className="absolute md:left-20 left-10 md:bottom-[30%] bottom-[40%] md:w-[70%] w-[80%]">
+                    <div className="absolute md:left-20 left-10 md:bottom-[30%] bottom-[20%] md:w-[70%] w-[80%]">
                       <h1 className="font-black md:text-7xl text-4xl py-6">
                         {item.title}
                       </h1>
                       <p className="max-w-2xl">
-                        {item.overview.length > 200 ? (
+                        {item.overview.length > 160 ? (
                           <>
-                            {item.overview.slice(0, 200)}
+                            {item.overview.slice(0, 160)}
                             <span className="text-pink-500 cursor-pointer">
                               {" "}
                               show more
@@ -138,9 +138,9 @@ const HeroSection: React.FC<Props> = ({ url }) => {
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="flex absolute bottom-2 my-3 md:right-4 z-10">
-        <Carousel className="md:max-w-4xl sm:max-w-sm w-full md:ms-auto mx-auto">
-          <CarouselContent className="pt-10 w-full">
+      <div className="flex absolute bottom-2 my-3 md:ms-auto md:mx-0 md:w-fit w-full mx-auto md:right-4 z-10">
+        <Carousel className="md:max-w-4xl sm:max-w-sm max-w-[300px] md:ms-auto mx-auto">
+          <CarouselContent className="pt-10">
             {apiList.map((item) => (
               <CarouselItem
                 key={item.id}

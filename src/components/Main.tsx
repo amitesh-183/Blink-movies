@@ -35,7 +35,7 @@ const Main: React.FC<Props> = ({
   const effectiveEnd = end !== undefined ? end : apiList.length;
 
   return (
-    <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full">
+    <main className="flex flex-1 flex-col gap-4 md:p-4 p-2 lg:gap-6 lg:p-6 w-full">
       <div className="flex items-center">
         <h1 className="text-lg font-semibold md:text-2xl">{sectionTitle}</h1>
       </div>
@@ -47,7 +47,7 @@ const Main: React.FC<Props> = ({
                 key={index}
                 className="p-2 border border-slate-800/20 shadow-xl rounded-xl"
               >
-                <Skeleton className="w-full h-[300px]" />
+                <Skeleton className="w-full md:h-[300px] h-[160px]" />
                 <h4 className="font-bold text-xl text-ellipsis text-nowrap w-full overflow-hidden py-4">
                   <Skeleton className="h-4 w-full" />
                 </h4>
@@ -71,10 +71,10 @@ const Main: React.FC<Props> = ({
                     }-info/${movie.id}`
                   )
                 }
-                className=" hover:brightness-125 scale-[0.99] hover:scale-[1] duration-300 p-2 rounded-xl"
+                className=" hover:brightness-125 scale-[0.99] hover:scale-[1] duration-300 py-2 px-1 rounded-xl"
               >
                 <img
-                  className=" w-full 2xl:h-full xl:h-[300px] lg:h-[280px] object-cover md:h-[360px] sm:h-[300px] h-[200px]"
+                  className=" w-full 2xl:h-full xl:h-[300px] lg:h-[280px] object-cover md:h-[360px] sm:h-[300px] h-[160px]"
                   src={`${
                     movie.poster_path
                       ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`

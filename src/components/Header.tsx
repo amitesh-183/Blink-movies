@@ -1,3 +1,4 @@
+import { BiCategory } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Button } from "./ui/button";
@@ -65,7 +66,9 @@ const Header = ({ extraClasses = "" }) => {
         className={`flex justify-between items-center border-b dark:text-white w-full left-0 z-10 md:px-10 px-4 py-2 ${extraClasses}`}
       >
         <Link to={"/"} className="flex gap-1 items-center">
-          <h3 className="font-black text-3xl tracking-wide">Sinema</h3>
+          <h3 className="font-black text-3xl tracking-wide md:block hidden">
+            Sinema
+          </h3>
           <img src={logo} className="w-10 h-10" alt="Sinema-Movie-Icon" />
         </Link>
         <div className="flex gap-4 items-center">
@@ -145,15 +148,47 @@ const Header = ({ extraClasses = "" }) => {
                   Tv Shows
                 </Link>
                 <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="text-lg hover:bg-transparent text-muted-foreground p-0 font-semibold justify-start ps-3"
+                    >
+                      <BiCategory className="mr-3" />
+                      Genres
+                      <ChevronDown size={14} className="mt-2 ms-1" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-auto">
+                    {/* <DropdownMenuSeparator /> */}
+                    <DropdownMenuRadioGroup
+                      value={genres?.toString()}
+                      onValueChange={onGenreChange}
+                      className="h-[200px] overflow-y-auto"
+                    >
+                      {apiList.map((genre) => (
+                        <DropdownMenuRadioItem
+                          key={genre.id}
+                          value={genre.id.toString()}
+                        >
+                          <span>{genre.name}</span>
+                        </DropdownMenuRadioItem>
+                      ))}
+                    </DropdownMenuRadioGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                <DropdownMenu>
                   <DropdownMenuTrigger asChild className="w-full flex gap-2">
-                    <Button size="icon">
+                    <Button
+                      size="icon"
+                      className="justify-start ps-11 text-lg font-semibold bg-transparent text-muted-foreground"
+                    >
                       <Sun className="h-[1.2rem] w-[1.2rem] absolute left-10 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                       <Moon className="absolute h-[1.2rem] w-[1.2rem] left-10 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                       <span className="sr-only">Toggle theme</span>
                       Theme
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
+                  <DropdownMenuContent align="end" className="w-[190px]">
                     <DropdownMenuItem onClick={() => setTheme("light")}>
                       Light
                     </DropdownMenuItem>
@@ -223,7 +258,7 @@ const Header = ({ extraClasses = "" }) => {
                 variant="ghost"
                 className="text-xl hover:bg-transparent p-0 font-normal"
               >
-                {genreName || "Genres"}{" "}
+                {genreName || "Genres"}
                 <ChevronDown size={14} className="mt-2 ms-1" />
               </Button>
             </DropdownMenuTrigger>

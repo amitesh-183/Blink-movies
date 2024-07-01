@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <>
       <div className="mx-auto container py-16 xl:px-20 lg:px-12 sm:px-6 px-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 md:gap-8 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 md:gap-8 gap-4">
           <div className="flex flex-col flex-shrink-0">
             <div className="dark:text-white">
               {/* <svg
@@ -104,7 +104,7 @@ const Footer = () => {
               </button>
             </div>
           </div>
-          <div className="sm:ml-0 ml-8 flex flex-col">
+          <div className="sm:ml-0 md:ml-8 flex flex-col">
             <h2 className="text-base font-semibold leading-4 text-gray-800 dark:text-white">
               Company
             </h2>
@@ -139,7 +139,7 @@ const Footer = () => {
               Testimonials
             </a>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col sm:mt-0 mt-4">
             <h2 className="text-base font-semibold leading-4 text-gray-800 dark:text-white">
               Support
             </h2>
