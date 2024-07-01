@@ -84,7 +84,7 @@ const HeroSection: React.FC<Props> = ({ url }) => {
             <CarouselItem key={item.id} className="p-0 m-0 border-0">
               <div className="">
                 <Card className="border-none">
-                  <CardContent className="flex md:h-screen h-[90vh] w-full p-0 text-white items-center justify-center relative">
+                  <CardContent className="flex md:h-screen h-[96vh] w-full p-0 text-white items-center justify-center relative">
                     <div className="bg-black/30 absolute inset-0"></div>
                     <div className="absolute inset-0 dark:bg-gradient-to-t from-background via-transparent to-background"></div>
                     <div className="absolute inset-0 dark:bg-gradient-to-r from-background to-transparent"></div>
